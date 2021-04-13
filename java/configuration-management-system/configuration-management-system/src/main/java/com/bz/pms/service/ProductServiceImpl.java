@@ -38,27 +38,34 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public ProductVO fetchProduct(ProductVO product) {
-		
-		return null;
+	public ProductVO fetchProduct(String productName, String companyName) {
+		Product fetchedProduct = mongoIntegrator.fetchProductByProductAndComapnyName(productName, companyName);
+		return productUtil.toProductVo(fetchedProduct);
 	}
 
 	@Override
 	public ProductVO createProduct(ProductVO product) {
-		// TODO Auto-generated method stub
-		return null;
+		Product productEntity = productUtil.toProductEntity(product);
+		
+		Product createdProduct = mongoIntegrator.createProduct(productEntity);
+		
+		return productUtil.toProductVo(createdProduct);
 	}
 
 	@Override
-	public ProductVO deleteProduct(ProductVO product) {
-		// TODO Auto-generated method stub
-		return null;
+	public void deleteProduct(ProductVO product) {
+		Product productEntity = productUtil.toProductEntity(product);
+		
+		mongoIntegrator.deleteProduct(productEntity);
 	}
 
 	@Override
 	public ProductVO updateProduct(ProductVO product) {
-		// TODO Auto-generated method stub
-		return null;
+		Product productEntity = productUtil.toProductEntity(product);
+		
+		Product updatedProduct = mongoIntegrator.updateProduct(productEntity);
+		
+		return productUtil.toProductVo(updatedProduct);
 	}
 
 }
