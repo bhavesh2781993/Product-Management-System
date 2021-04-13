@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.bz.pms</groupId>
-	<artifactId>discovery-server</artifactId>
+	<artifactId>service-registry</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>discovery-server</name>
-	<description>Demo project for Spring Boot</description>
+	<name>service-registry</name>
+	<description>Service to register microservices</description>
 	<properties>
 		<java.version>1.8</java.version>
 		<spring-cloud.version>2020.0.2</spring-cloud.version>
