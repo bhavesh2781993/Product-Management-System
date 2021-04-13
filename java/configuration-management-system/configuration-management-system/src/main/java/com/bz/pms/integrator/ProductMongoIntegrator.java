@@ -37,14 +37,17 @@ public class ProductMongoIntegrator {
 		return null;
 	}
 	
+	@Retryable(value = MongoSocketException.class, maxAttemptsExpression = "${retry.maxAttempts}", backoff = @Backoff(delayExpression = "${retry.maxDelay}"))
 	public Product createProduct(Product product) {
 		return productRepository.save(product);
 	}
 
+	@Retryable(value = MongoSocketException.class, maxAttemptsExpression = "${retry.maxAttempts}", backoff = @Backoff(delayExpression = "${retry.maxDelay}"))
 	public void deleteProduct(Product product) {
 		productRepository.delete(product);
 	}
 
+	@Retryable(value = MongoSocketException.class, maxAttemptsExpression = "${retry.maxAttempts}", backoff = @Backoff(delayExpression = "${retry.maxDelay}"))
 	public Product updateProduct(Product product) {
 		Optional<Product> availableProduct = productRepository.findByProductNameAndCompanyName(product.getProductName(), product.getCompanyName());
 		

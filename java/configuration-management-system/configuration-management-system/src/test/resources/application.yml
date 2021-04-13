@@ -1,0 +1,22 @@
+# SPRING PROPERTIES
+spring:
+  application:
+    name: configuration-management-system
+  profiles:
+    active: local
+
+server:
+  port: 8081
+
+# EUREKA PROPERTIES 
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+# RETRY PROPERTIES
+retry:
+  maxAttempts: 2
+  maxDelay: 100

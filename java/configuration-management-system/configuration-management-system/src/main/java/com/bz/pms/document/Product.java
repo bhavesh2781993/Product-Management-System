@@ -2,8 +2,8 @@ package com.bz.pms.document;
 
 import java.util.List;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 import lombok.Data;
 
@@ -11,9 +11,8 @@ import lombok.Data;
 @Data
 public class Product {
 
-	@Field("_id")
+	@Id
 	private String id;
-	
 	private String productName;
 	private String companyName;
 	private List<Content> contents;
