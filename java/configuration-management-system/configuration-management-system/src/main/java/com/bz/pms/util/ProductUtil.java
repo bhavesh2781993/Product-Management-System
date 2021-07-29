@@ -1,9 +1,11 @@
 package com.bz.pms.util;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 
 import com.bz.pms.document.Product;
 import com.bz.pms.model.ProductVO;
@@ -19,19 +21,31 @@ public class ProductUtil {
 	private ProductUtil() {}
 	
 	public List<Product> toProductEntityList(List<ProductVO> productVOList) {
-		return objectMapper.convertValue(productVOList, new TypeReference<List<Product>>() {});
+		List<Product> convertedValue = null;
+		if(!CollectionUtils.isEmpty(productVOList)) convertedValue = objectMapper.convertValue(productVOList, new TypeReference<List<Product>>() {});
+		else convertedValue = new ArrayList<>();
+		
+		return convertedValue;
 	}
 	
 	public Product toProductEntity(ProductVO productVO) {
-		return objectMapper.convertValue(productVO, Product.class);
+		Product convertedValue = null;
+		if(productVO != null) convertedValue = objectMapper.convertValue(productVO, Product.class);
+		return convertedValue;
 	}
 	
 	public List<ProductVO> toProductVoList(List<Product> productEntityList) {
-		return objectMapper.convertValue(productEntityList, new TypeReference<List<ProductVO>>() {});
+		List<ProductVO> convertedValue = null;
+		if(!CollectionUtils.isEmpty(productEntityList)) convertedValue = objectMapper.convertValue(productEntityList, new TypeReference<List<ProductVO>>() {});
+		else convertedValue = new ArrayList<>();
+		
+		return convertedValue;
 	}
 	
 	public ProductVO toProductVo(Product productEntity) {
-		return objectMapper.convertValue(productEntity, ProductVO.class);
+		ProductVO convertedValue = null;
+		if(productEntity != null) convertedValue = objectMapper.convertValue(productEntity, ProductVO.class);
+		return convertedValue;
 	}
 	
 }
